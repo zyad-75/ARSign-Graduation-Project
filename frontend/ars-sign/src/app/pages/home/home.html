@@ -1,0 +1,239 @@
+<div class="home-container">
+    <!-- Restored Hero Section with Yellow/Blue Gradient -->
+    <section class="hero-section">
+        <div class="hero-gradient-bg"></div>
+        <div
+            class="relative z-10 px-4 mx-auto max-w-screen-xl text-center flex flex-col items-center justify-center min-h-[90vh]">
+            <h1 class="hero-title animate-fade-in-up">
+                {{ 'Empowering Connection with' | translate }} <br>
+                <span class="gradient-text">{{ 'Arabic Sign Language' | translate }}</span>
+            </h1>
+            <p class="hero-subtitle animate-fade-in-up delay-200">
+                {{ 'ProjectSummary' | translate }}
+            </p>
+            <div
+                class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 animate-fade-in-up delay-400">
+                <a routerLink="/features" class="primary-btn">
+                    {{ 'Explore Features' | translate }}
+                    <svg class="w-5 h-5 ml-2 rtl:mr-2 rtl:-ml-1 rtl:rotate-180" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Classic Split Layout: Text on Left, 3 Stacked Rectangles on Right -->
+    <section class="about-section py-20 bg-gray-950/40 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[80px] translate-x-1/2"></div>
+        <div class="max-w-screen-xl mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Side: Text and Intro -->
+                <div class="lg:col-span-5 animate-fade-in-up">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-xs mb-6 uppercase tracking-wider">
+                        {{ 'About ARsign' | translate }}
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-5xl font-black text-white mb-6 leading-tight">
+                        {{ 'A Comprehensive Platform for the' | translate }} <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-400">{{ 'Deaf and Mute Community' | translate }}</span>
+                    </h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        {{ 'ARsign leverages pioneering AI technology to eliminate communication barriers, offering real-time translation and accessible education all in one unified platform.' | translate }}
+                    </p>
+                    <a routerLink="/about-us" class="px-5 py-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary hover:bg-primary hover:text-gray-900 transition-all font-bold text-sm inline-flex items-center group">
+                        {{ 'Learn More' | translate }}
+                        <svg class="w-4 h-4 ml-2 rtl:mr-2 rtl:-ml-1 rtl:rotate-180 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Right Side: 3 Stacked Horizontal Rectangles -->
+                <div class="lg:col-span-7 flex flex-col gap-4 animate-fade-in-up delay-200">
+                    <!-- Feature 1 -->
+                    <a routerLink="/text-to-sign" class="glass-card rounded-2xl p-6 border border-white/5 flex items-center gap-6 group hover:border-primary/50 transition-colors bg-white/[0.02] hover:-translate-y-1">
+                        <div class="w-16 h-16 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">{{ 'Text-to-Sign Avatar' | translate }}</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">{{ 'Translate any text into expressive 3D animated Arabic Sign Language instantly.' | translate }}</p>
+                        </div>
+                    </a>
+                    
+                    <!-- Feature 2 -->
+                    <a routerLink="/sign-to-text" class="glass-card rounded-2xl p-6 border border-white/5 flex items-center gap-6 group hover:border-blue-500/50 transition-colors bg-white/[0.02] hover:-translate-y-1">
+                        <div class="w-16 h-16 shrink-0 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-500/20 transition-colors">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{{ 'AI Sign-to-Text' | translate }}</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">{{ 'Convert complex hand gestures into readable Arabic text in real-time using neural networks.' | translate }}</p>
+                        </div>
+                    </a>
+
+                    <!-- Feature 3 -->
+                    <a routerLink="/lessons" class="glass-card rounded-2xl p-6 border border-white/5 flex items-center gap-6 group hover:border-purple-500/50 transition-colors bg-white/[0.02] hover:-translate-y-1">
+                        <div class="w-16 h-16 shrink-0 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 group-hover:bg-purple-500/20 transition-colors">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">{{ 'Interactive Education' | translate }}</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">{{ 'Master ArSL through comprehensive video courses and interactive quizzes tailored for all levels.' | translate }}</p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Goals Section -->
+    <section class="project-goals-section py-24 bg-gray-950/40 relative border-y border-white/5">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none"></div>
+        <div class="max-w-screen-xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-20 animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-black text-white mb-6">{{ 'The Goal of ARsign' | translate }}</h2>
+                <div class="w-24 h-1.5 bg-primary mx-auto rounded-full mb-8"></div>
+                <p class="text-gray-400 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+                    {{ 'ARsign is passionately built to transform the way we communicate. Our primary objective is to create a seamless, universally accessible environment where the Arab Deaf and Mute Community can thrive alongside everyone else. We believe that true technological advancement is measured by its ability to bring people closer together.' | translate }}
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Goal 1 -->
+                <div class="glass-card p-10 rounded-[2.5rem] border border-white/5 animate-fade-in-up delay-100 group transition-all duration-500 hover:-translate-y-2 hover:border-primary/30">
+                    <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:bg-primary/20 transition-all">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">{{ 'Fostering Independence' | translate }}</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">{{ 'By providing robust, automated translation tools, we empower individuals to navigate daily interactions, professional environments, and educational institutions with complete independence and confidence.' | translate }}</p>
+                </div>
+
+                <!-- Goal 2 -->
+                <div class="glass-card p-10 rounded-[2.5rem] border border-white/5 animate-fade-in-up delay-200 group transition-all duration-500 hover:-translate-y-2 hover:border-blue-500/30">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-8 group-hover:bg-blue-500/20 transition-all">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">{{ 'Building a Unified Society' | translate }}</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">{{ 'Our technology acts as a direct bridge, closing the gap between the entire Arab world and Arabic Sign Language. We are building a society where conversational barriers simply no longer exist.' | translate }}</p>
+                </div>
+
+                <!-- Goal 3 -->
+                <div class="glass-card p-10 rounded-[2.5rem] border border-white/5 animate-fade-in-up delay-300 md:col-span-2 lg:col-span-1 group transition-all duration-500 hover:-translate-y-2 hover:border-green-500/30">
+                    <div class="w-16 h-16 rounded-2xl bg-green-500/10 flex items-center justify-center text-green-400 mb-8 group-hover:bg-green-500/20 transition-all">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">{{ 'Pioneering AI Research' | translate }}</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">{{ 'We continuously push the boundaries of neural networks and computer vision to deliver the most accurate, real-time sign language recognition in the Arab world.' | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaigns Preview Section -->
+    <section class="campaign-teaser py-12 bg-gray-950/40 relative overflow-hidden">
+        <div class="animated-bg"><div class="blob-3"></div></div>
+        <div class="max-w-screen-xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="section-title text-white mb-6">{{ 'Explore Our' | translate }} <span class="text-primary">{{ 'Campaigns' | translate }}</span></h2>
+            <p class="teaser-text mb-16">
+                {{ 'AwarenessDescription' | translate }}
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left mb-8">
+            <!-- Campaign 1 -->
+            <div class="glass-card p-6 rounded-3xl border border-white/5 group transition-all duration-500 hover:scale-105 hover:border-primary/50 flex flex-col animate-fade-in-up delay-100">
+                <div class="h-48 rounded-2xl overflow-hidden mb-6 relative">
+                    <img src="/images/s5.avif" 
+                         alt="Workshop" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-primary text-secondary text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg">
+                        {{ 'Active' | translate }}
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                    {{ 'Sign Language Basics Workshop' | translate }}
+                </h3>
+                <p class="text-gray-400 mb-6 text-xs leading-relaxed flex-grow">
+                    {{ 'WorkshopDescription' | translate }}
+                </p>
+                <a href="https://wfdeaf.org/" target="_blank" class="text-primary text-sm font-bold flex items-center group/link hover:brightness-125 transition-all">
+                    {{ 'Learn More' | translate }}
+                    <svg class="w-4 h-4 ml-2 rtl:rotate-180 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+
+            <!-- Campaign 2 -->
+            <div class="glass-card p-6 rounded-3xl border border-white/5 group transition-all duration-500 hover:scale-105 hover:border-blue-500/50 flex flex-col animate-fade-in-up delay-200">
+                <div class="h-48 rounded-2xl overflow-hidden mb-6 relative">
+                    <img src="/images/s6.avif" 
+                         alt="Awareness" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-blue-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg">
+                        {{ 'Upcoming' | translate }}
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                    {{ 'Deaf Awareness Week' | translate }}
+                </h3>
+                <p class="text-gray-400 mb-6 text-xs leading-relaxed flex-grow">
+                    {{ 'AwarenessDescription' | translate }}
+                </p>
+                <a href="https://www.un.org/en/observances/sign-languages-day" target="_blank" class="text-blue-400 text-sm font-bold flex items-center group/link hover:brightness-125 transition-all">
+                    {{ 'Join Event' | translate }}
+                    <svg class="w-4 h-4 ml-2 rtl:rotate-180 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+
+            <!-- Campaign 3 -->
+            <div class="glass-card p-6 rounded-3xl border border-white/5 group transition-all duration-500 hover:scale-105 hover:border-purple-500/50 flex flex-col animate-fade-in-up delay-300">
+                <div class="h-48 rounded-2xl overflow-hidden mb-6 relative">
+                    <img src="/images/s7.png" 
+                         alt="Inclusion" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-purple-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg">
+                        {{ 'Active' | translate }}
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
+                    {{ 'Inclusive Workplace Seminar' | translate }}
+                </h3>
+                <p class="text-gray-400 mb-6 text-xs leading-relaxed flex-grow">
+                    {{ 'SeminarDescription' | translate }}
+                </p>
+                <a href="https://www.nad.org/resources/sign-language-interpreting/" target="_blank" class="text-purple-400 text-sm font-bold flex items-center group/link hover:brightness-125 transition-all">
+                    {{ 'Learn More' | translate }}
+                    <svg class="w-4 h-4 ml-2 rtl:rotate-180 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+
+            <!-- Campaign 4 -->
+            <div class="glass-card p-6 rounded-3xl border border-white/5 group transition-all duration-500 hover:scale-105 hover:border-green-500/50 flex flex-col animate-fade-in-up delay-400">
+                <div class="h-48 rounded-2xl overflow-hidden mb-6 relative">
+                    <img src="/images/s8.png" 
+                         alt="Deaf Tech" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-green-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg">
+                        {{ 'Upcoming' | translate }}
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">
+                    {{ 'Sign-Tech Hackathon' | translate }}
+                </h3>
+                <p class="text-gray-400 mb-6 text-xs leading-relaxed flex-grow">
+                    {{ 'HackathonDescription' | translate }}
+                </p>
+                <a href="https://github.com/topics/sign-language-recognition" target="_blank" class="text-green-400 text-sm font-bold flex items-center group/link hover:brightness-125 transition-all">
+                    {{ 'Register Hub' | translate }}
+                    <svg class="w-4 h-4 ml-2 rtl:rotate-180 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        </div>
+            <a routerLink="/campaigns" class="secondary-btn scale-110">
+                {{ 'View All Campaigns' | translate }}
+                <svg class="w-5 h-5 ml-2 rtl:mr-2 rtl:-ml-1 rtl:rotate-180" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                    </path>
+                </svg>
+            </a>
+        </div>
+    </section>
+</div>

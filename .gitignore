@@ -1,0 +1,11 @@
+venv/
+node_modules/
+data/
+landmark_dataset/
+outputs/
+*.webm
+*.mp4
+*.h5
+*.keras
+*.pkl
+.env

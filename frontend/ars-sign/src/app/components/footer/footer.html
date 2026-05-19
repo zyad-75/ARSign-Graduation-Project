@@ -1,0 +1,52 @@
+<footer class="footer-container">
+    <div class="max-w-screen-xl mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <!-- Brand Section -->
+            <div class="col-span-1 md:col-span-1">
+                <a routerLink="/" class="footer-brand flex flex-row items-center" style="gap: 0px;">
+                    <img src="images/Logo.png" alt="ArSign Logo" class="h-16 w-auto">
+                    <span class="brand-name" style="margin-inline-start: -24px;">ArSign</span>
+                </a>
+                <p class="footer-desc">
+                    {{ 'FooterDescription' | translate }}
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="footer-title">{{ 'QuickLinks' | translate }}</h4>
+                <ul class="footer-links">
+                    <li><a routerLink="/">{{ 'Home' | translate }}</a></li>
+                    <li><a routerLink="/features">{{ 'Features' | translate }}</a></li>
+                    <li><a routerLink="/about-us">{{ 'About Us' | translate }}</a></li>
+                    <li><a routerLink="/campaigns">{{ 'Campaigns' | translate }}</a></li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div>
+                <h4 class="footer-title">{{ 'Resources' | translate }}</h4>
+                <ul class="footer-links">
+                    <li><a routerLink="/feedback">{{ 'Feedback' | translate }}</a></li>
+                    <li><a routerLink="/privacy">{{ 'Privacy Policy' | translate }}</a></li>
+                    <li><a routerLink="/terms">{{ 'Terms & Conditions' | translate }}</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div>
+                <h4 class="footer-title">{{ 'Subscribe' | translate }}</h4>
+                <p class="newsletter-desc">{{ 'Stay updated with our latest tools and events.' | translate }}</p>
+                <form class="newsletter-form">
+                    <input type="email" [placeholder]="'EmailPlaceholder' | translate" class="newsletter-input">
+                    <button type="submit" class="newsletter-btn">{{ 'JoinNow' | translate }}</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 ARsign. {{ 'All Rights Reserved' | translate }}.</p>
+        </div>
+    </div>
+</footer>

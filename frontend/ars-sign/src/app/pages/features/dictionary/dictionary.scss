@@ -1,0 +1,76 @@
+.dictionary-page {
+    background-color: #050505;
+    color: #fff;
+}
+
+.emergency-card {
+    border-color: rgba(239, 68, 68, 0.1) !important;
+    background: rgba(239, 68, 68, 0.02) !important;
+    box-shadow: 0 0 20px -5px rgba(239, 68, 68, 0.15);
+    
+    .text-primary { color: #ef4444 !important; }
+    
+    &:hover {
+        border-color: rgba(239, 68, 68, 0.3) !important;
+        box-shadow: 0 0 30px -5px rgba(239, 68, 68, 0.3) !important;
+    }
+}
+
+.glass-card {
+    border-width: 1px !important;
+}
+
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 10% 20%, rgba(255, 191, 0, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 50, 255, 0.05) 0%, transparent 40%);
+    filter: blur(60px);
+    animation: bg-move 20s infinite alternate ease-in-out;
+}
+
+@keyframes bg-move {
+    from { transform: scale(1) translate(0, 0); }
+    to { transform: scale(1.1) translate(20px, 20px); }
+}
+
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.delay-200 { animation-delay: 0.2s; }
+
+// Video Card Specific Styles
+.group\/video {
+    .play-button-container {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    &:hover .play-button-container {
+        transform: scale(1.1);
+        background-color: #fff;
+        color: #000;
+        
+        svg {
+            color: #000;
+        }
+    }
+}
+
+.thumbnail-img {
+    filter: brightness(0.8);
+    transition: all 0.7s ease;
+}
+
+.group\/video:hover .thumbnail-img {
+    filter: brightness(1) scale(1.05);
+}

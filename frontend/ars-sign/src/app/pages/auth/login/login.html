@@ -1,0 +1,68 @@
+<section class="min-h-screen relative overflow-hidden flex items-center justify-center py-12 px-4 shadow-2xl">
+    <div class="animated-bg"><div class="blob-3"></div></div>
+
+    <div class="relative z-10 w-full max-w-md">
+        <div class="glass-card p-10 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-2xl animate-fade-in-up">
+            <div class="text-center mb-10">
+                <a routerLink="/" class="inline-flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-yellow-500 flex items-center justify-center text-secondary font-black text-2xl group-hover:rotate-6 transition-transform">
+                        AR
+                    </div>
+                    <span class="text-3xl font-black text-white tracking-tighter">ARsign</span>
+                </a>
+            </div>
+
+            <h1 class="text-2xl font-black text-white mb-8 text-center">
+                {{ 'Sign in to your account' | translate }}
+            </h1>
+                <form class="space-y-6" (submit)="login($event)">
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-300">
+                            {{ 'Email Address' | translate }}
+                        </label>
+                        <input type="email" name="email" id="email" [(ngModel)]="email"
+                            class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
+                            placeholder="name@company.com" required="">
+                    </div>
+                    <div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-300">
+                            {{ 'Password' | translate }}
+                        </label>
+                        <input type="password" name="password" id="password" [(ngModel)]="password"
+                            placeholder="••••••••"
+                            class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
+                            required="">
+                    </div>
+
+                    <div *ngIf="errorMessage" class="text-red-500 text-sm font-medium">{{ errorMessage }}</div>
+
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="remember" aria-describedby="remember" type="checkbox"
+                                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="remember" class="text-gray-500 dark:text-gray-300">
+                                    {{ 'Remember me' | translate }}
+                                </label>
+                            </div>
+                        </div>
+                        <a routerLink="/forgot-password"
+                            class="text-sm font-medium text-primary hover:underline dark:text-primary-500">
+                            {{ 'Forgot Password?' | translate }}
+                        </a>
+                    </div>
+                    <button type="submit" [disabled]="loading"
+                        class="w-full py-4 rounded-2xl bg-primary text-secondary font-black hover:bg-yellow-400 focus:ring-4 focus:ring-primary/30 transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/20 disabled:opacity-50">
+                        {{ loading ? 'Signing in...' : ('Log In' | translate) }}
+                    </button>
+                    <p class="text-sm font-medium text-gray-400 text-center">
+                        {{ 'Don’t have an account yet?' | translate }} <a routerLink="/signup"
+                            class="text-primary font-bold hover:underline">{{ 'Sign Up' |
+                            translate }}</a>
+                    </p>
+                </form>
+        </div>
+    </div>
+</section>

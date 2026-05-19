@@ -1,0 +1,31 @@
+.btn-start {
+    background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+    color: #0f172a;
+    box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+
+    &:hover {
+        box-shadow: 0 8px 25px rgba(234, 179, 8, 0.5);
+    }
+}
+
+.btn-stop {
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+
+    &:hover {
+        box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
+    }
+}
+
+.font-arabic {
+    font-family: 'Amiri', 'Inter', serif;
+}
+
+:host ::ng-deep {
+    .glass-card {
+        background: rgba(17, 24, 39, 0.6);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+}

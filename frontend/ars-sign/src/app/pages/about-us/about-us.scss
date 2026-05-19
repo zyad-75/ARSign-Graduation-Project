@@ -1,0 +1,123 @@
+.about-container {
+    background-color: #0b0f19;
+}
+
+.about-hero {
+    height: 50vh;
+    background: url('https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), #0b0f19);
+    }
+
+    h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+        color: #eab308;
+        font-weight: 600;
+    }
+}
+
+.about-content {
+    padding: 8rem 0;
+}
+
+.sub-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: #eab308;
+    }
+}
+
+.desc-text {
+    font-size: 1.125rem;
+    color: #94a3b8;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.image-box {
+    position: relative;
+
+    .main-img {
+        width: 100%;
+        border-radius: 1.5rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .img-accent {
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #eab308;
+        border-radius: 1.5rem;
+        z-index: -1;
+    }
+}
+
+.about-campaigns {
+    padding: 8rem 0;
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1531206715517-5c0ba140e2b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+}
+
+.primary-btn {
+    display: flex;
+    align-items: center;
+    background-color: #eab308;
+    color: #0f172a;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(234, 179, 8, 0.3);
+
+    &:hover {
+        background-color: #fbbf24;
+        transform: translateY(-2px);
+    }
+}
+
+.delay-100 {
+    animation-delay: 0.1s;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.delay-300 {
+    animation-delay: 0.3s;
+}
+
+.delay-400 {
+    animation-delay: 0.4s;
+}

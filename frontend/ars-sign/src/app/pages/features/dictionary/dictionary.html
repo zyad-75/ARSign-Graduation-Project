@@ -1,0 +1,96 @@
+<div class="dictionary-page min-h-screen pt-32 pb-12 relative overflow-hidden">
+    <div class="animated-bg"><div class="blob-3"></div></div>
+
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <header class="text-center mb-12 animate-fade-in">
+            <h1 class="text-4xl md:text-5xl font-black mb-4 animate-fade-in">
+                <ng-container *ngIf="isArabic; else enHeader">
+                    <span class="text-primary">قاموس</span> <span class="text-white">لغة الإشارة</span>
+                </ng-container>
+                <ng-template #enHeader>
+                    <span class="text-white">ArSL</span> <span class="text-primary"> Dictionary</span>
+                </ng-template>
+            </h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                {{ 'Explore a comprehensive library of Arabic Sign Language gestures categorized for easy learning.' | translate }}
+            </p>
+        </header>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in-up">
+            <button *ngFor="let cat of categories" (click)="selectCategory(cat.name)"
+                class="px-6 py-3 rounded-2xl font-bold transition-all flex items-center gap-3 border"
+                [class.bg-primary]="selectedCategory === cat.name"
+                [class.text-secondary]="selectedCategory === cat.name"
+                [class.border-primary]="selectedCategory === cat.name"
+                [class.bg-white/5]="selectedCategory !== cat.name"
+                [class.text-gray-400]="selectedCategory !== cat.name"
+                [class.border-white/10]="selectedCategory !== cat.name">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="cat.icon"></path>
+                </svg>
+                {{ cat.name | translate }}
+            </button>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up delay-200">
+            <div *ngFor="let sign of filteredSigns" 
+                class="glass-card p-6 rounded-3xl border border-white/10 group hover:scale-105 transition-all duration-500"
+                [class.emergency-card]="sign.category === 'Emergency'">
+                <div class="aspect-video bg-gray-900 rounded-2xl mb-4 flex items-center justify-center relative overflow-hidden">
+                    <!-- Video Content -->
+                    <div *ngIf="sign.videoUrl !== '#'" class="w-full h-full cursor-pointer group/video" (click)="playVideo(sign.term)">
+                        <!-- Thumbnail Placeholder -->
+                        <div *ngIf="activeTerm !== sign.term" class="absolute inset-0 z-10">
+                            <img [src]="getThumbnailUrl(sign.videoUrl)" 
+                                 class="w-full h-full object-cover" 
+                                 [alt]="sign.term">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 group-hover/video:bg-black/20">
+                                <div class="play-button-container w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-2xl scale-90 group-hover/video:scale-100 transition-transform duration-300">
+                                    <svg class="w-8 h-8 text-secondary fill-current ml-1" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- YouTube Video Iframe (Lazy Loaded) -->
+                        <div *ngIf="activeTerm === sign.term" class="absolute inset-0 w-full h-full z-20">
+                            <iframe 
+                                [src]="getSafeUrl(sign.videoUrl, true)"
+                                [title]="sign.term"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                class="w-full h-full">
+                            </iframe>
+                            <button (click)="$event.stopPropagation(); activeTerm = null" 
+                                class="absolute top-2 right-2 bg-red-500/80 hover:bg-red-600 text-white p-1 rounded-lg backdrop-blur-sm transition-colors z-30">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Placeholder for missing video -->
+                    <ng-container *ngIf="sign.videoUrl === '#'">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+                        <svg class="w-12 h-12 text-primary/40" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
+                        </svg>
+                    </ng-container>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-xl font-black text-white group-hover:text-primary transition-colors">
+                            {{ isArabic ? sign.term : sign.translation }}
+                        </h3>
+                    </div>
+                    <span class="text-[10px] px-2 py-1 rounded-full bg-white/5 text-gray-400 uppercase font-black border border-white/10">
+                        {{ sign.category | translate }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

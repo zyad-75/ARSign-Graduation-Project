@@ -1,0 +1,91 @@
+<div class="animated-bg"><div class="blob-3"></div></div>
+<section class="min-h-screen pt-24 pb-12 px-4 animate-fade-in-up relative z-10">
+    <div
+        class="max-w-4xl mx-auto glass-card rounded-2xl p-8 transform transition-all hover:scale-[1.01] duration-500 border border-white/10 mb-8">
+        <h1 class="text-4xl font-extrabold text-white text-center mb-4">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-yellow-400">
+                {{ 'Text-to-Sign' | translate }}
+            </span>
+        </h1>
+        <p class="text-gray-400 text-center text-lg">{{ 'Convert Arabic Sign Language (ArSL) text into 3D animations.' | translate }}</p>
+    </div>
+
+    <div class="max-w-screen-xl mx-auto grid md:grid-cols-2 gap-8">
+        <!-- Input Section -->
+        <div class="glass-card rounded-2xl p-6 border border-gray-700 flex flex-col h-full">
+            <h2 class="text-2xl font-bold text-white mb-6 border-b border-gray-700 pb-2">{{ 'Enter Text' | translate }}</h2>
+
+            <textarea [(ngModel)]="inputText" rows="6"
+                class="block p-4 w-full text-base text-white bg-gray-800/50 rounded-xl border border-gray-600 focus:ring-primary focus:border-primary placeholder-gray-500 resize-none"
+                placeholder="{{ 'Type here to convert to sign language...' | translate }}"></textarea>
+
+            <div class="mt-6 flex justify-between">
+                <button (click)="inputText = ''"
+                    class="text-gray-300 bg-transparent border border-gray-600 hover:bg-gray-700 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors">
+                    {{ 'Clear' | translate }}
+                </button>
+
+                <button (click)="convertText()"
+                    class="text-secondary bg-primary hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-bold rounded-lg text-sm px-6 py-2.5 text-center flex items-center shadow-lg transform hover:scale-105 transition-all">
+                    {{ 'Submit' | translate }}
+                    <svg class="rtl:rotate-180 w-4 h-4 ms-2" fill="none" viewBox="0 0 14 10" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Avatar Display Section -->
+        <div class="glass-card rounded-2xl p-6 border border-gray-700 flex flex-col h-full min-h-[400px]">
+            <h2 class="text-2xl font-bold text-white mb-6 w-full text-center border-b border-gray-700 pb-2">
+                {{ 'Avatar' | translate }}
+            </h2>
+
+            <div
+                class="relative w-full flex-grow flex items-center justify-center bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800">
+                
+                <!-- Loading State (only shown briefly before animation begins) -->
+                <div *ngIf="isProcessing && !animationController.isAnimating" 
+                    class="absolute inset-0 flex flex-col items-center justify-center text-primary z-30 bg-gray-900/60 transition-opacity duration-300">
+                    <div class="relative">
+                        <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary"></div>
+                    </div>
+                    <p class="font-bold mt-6 text-xl tracking-wider animate-pulse text-white">
+                        {{ 'Translating...' | translate }}
+                    </p>
+                </div>
+
+                <!-- Empty State -->
+                <div *ngIf="!isProcessing && !avatarLoaded && !avatarError"
+                    class="absolute inset-0 flex flex-col items-center justify-center text-gray-500 z-10 pointer-events-none">
+                    <svg class="w-16 h-16 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                        </path>
+                    </svg>
+                    <p class="font-medium">{{ 'Initializing 3D Avatar...' | translate }}</p>
+                </div>
+
+                <!-- Error State -->
+                <div *ngIf="avatarError" class="absolute inset-0 flex flex-col items-center justify-center text-red-500 z-10 pointer-events-none">
+                     <p class="font-medium">{{ 'Avatar Model Not Found.' | translate }}</p>
+                     <p class="text-sm mt-2 opacity-80">{{ 'Please add avatar.glb to assets folder.' | translate }}</p>
+                </div>
+
+                <!-- Word Overlay -->
+                <div *ngIf="currentWord"
+                    class="absolute top-1/2 right-3 -translate-y-1/2 z-20">
+                    <div class="glass-card px-6 py-2 rounded-full border border-primary/30 shadow-[0_0_20px_rgba(255,215,0,0.2)]">
+                        <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-white drop-shadow-sm">
+                            {{ currentWord }}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- 3D Canvas Display -->
+                <canvas #avatarCanvas class="w-full h-full object-cover outline-none"></canvas>
+            </div>
+        </div>
+    </div>
+</section>

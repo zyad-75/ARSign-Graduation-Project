@@ -1,0 +1,197 @@
+<nav class="fixed w-full z-50 transition-all duration-300 glass-nav border-b border-white/10">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+
+        <!-- Brand & Logo -->
+        <a routerLink="/" class="flex items-center group" style="gap: 0px;">
+            <!-- Logo Image -->
+            <img src="images/Logo.png" alt="ArSign Logo" class="h-16 w-auto transition-transform group-hover:scale-110">
+            <span
+                class="self-center text-3xl font-extrabold text-white tracking-tight group-hover:text-primary transition-colors" style="margin-inline-start: -20px;">
+                {{ 'ArSign' | translate }}
+            </span>
+        </a>
+
+        <!-- Right Side: Auth / Profile / Mobile Toggle -->
+        <div class="flex items-center md:order-2 space-x-3 md:space-x-4 rtl:space-x-reverse">
+            <!-- Language Switcher -->
+            <button (click)="toggleLanguage()"
+                class="text-gray-300 hover:text-white font-medium text-sm px-3 py-1.5 rounded-full border border-gray-600 hover:border-primary transition-all">
+                {{ translationService.currentLang() === 'en' ? 'EN' : 'AR' }}
+            </button>
+
+            <!-- Auth Buttons (Not Logged In) -->
+            <div *ngIf="!isLoggedIn" class="hidden md:flex items-center space-x-3 rtl:space-x-reverse">
+                <a routerLink="/login"
+                    class="text-white hover:text-primary font-medium text-sm transition-colors px-3 py-2">
+                    {{ 'Log In' | translate }}
+                </a>
+                <a routerLink="/signup"
+                    class="text-secondary bg-primary hover:bg-yellow-400 focus:ring-4 focus:ring-yellow-300 font-bold rounded-full text-sm px-5 py-2.5 transition-transform transform hover:scale-105 shadow-lg shadow-yellow-500/20">
+                    {{ 'Sign Up' | translate }}
+                </a>
+            </div>
+
+            <!-- User Profile Dropdown (Logged In) -->
+            <div *ngIf="isLoggedIn" class="relative">
+                <button (click)="toggleProfileDropdown()"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 border-2 border-primary text-primary hover:bg-gray-700 transition-colors focus:ring-4 focus:ring-gray-600">
+                    <span class="sr-only">Open user menu</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+
+                <!-- Dropdown Menu -->
+                <div *ngIf="isProfileDropdownOpen"
+                    class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-xl shadow-2xl py-2 border border-gray-700 z-50 origin-top-right transform transition-all duration-200">
+                    <div class="px-4 py-3 border-b border-gray-700">
+                        <span class="block text-sm text-white font-bold">{{ user?.firstName }} {{ user?.lastName
+                            }}</span>
+                        <span class="block text-sm font-medium text-gray-400 truncate">{{ user?.email }}</span>
+                    </div>
+                    <ul class="py-1">
+                        <li>
+                            <a routerLink="/profile" (click)="isProfileDropdownOpen = false"
+                                class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">
+                                {{ 'Profile' | translate }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" (click)="$event.preventDefault(); logout()"
+                                class="block px-4 py-2 text-sm text-red-400 hover:bg-gray-700 hover:text-red-300">
+                                {{ 'Sign out' | translate }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button (click)="toggleMobileMenu()" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Main Navigation Links -->
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+            <ul
+                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-700 rounded-2xl bg-gray-800/50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
+                <li>
+                    <a routerLink="/" routerLinkActive="text-primary" [routerLinkActiveOptions]="{exact: true}"
+                        class="block py-2 px-3 md:p-0 text-gray-300 hover:text-primary transition-colors">
+                        {{ 'Home' | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/about-us" routerLinkActive="text-primary"
+                        class="block py-2 px-3 md:p-0 text-gray-300 hover:text-primary transition-colors">
+                        {{ 'About Us' | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/features" routerLinkActive="text-primary"
+                        class="block py-2 px-3 md:p-0 text-gray-300 hover:text-primary transition-colors">
+                        {{ 'Features' | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/dictionary" routerLinkActive="text-primary"
+                        class="block py-2 px-3 md:p-0 text-gray-300 hover:text-primary transition-colors">
+                        {{ 'Dictionary' | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/campaigns" routerLinkActive="text-primary"
+                        class="block py-2 px-3 md:p-0 text-gray-300 hover:text-primary transition-colors">
+                        {{ 'Campaigns' | translate }}
+                    </a>
+                </li>
+                <li *ngIf="isLoggedIn">
+                    <a routerLink="/profile" routerLinkActive="text-primary"
+                        class="block py-2 px-3 md:p-0 text-gray-300 hover:text-primary transition-colors font-bold border-b-2 border-transparent hover:border-primary">
+                        {{ 'Profile' | translate }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+<!-- Features Sub-navigation / Premium Back Button -->
+<div *ngIf="showBackArrow" class="fixed top-24 left-0 w-full z-40 px-4 animate-fade-in pointer-events-none">
+    <div class="max-w-screen-xl mx-auto flex justify-start">
+        <div class="inline-flex pointer-events-auto">
+            <a routerLink="/features"
+                class="flex items-center gap-2.5 px-4 py-2 rounded-2xl glass-card border border-white/10 hover:border-primary/50 transition-all group shadow-2xl backdrop-blur-xl bg-black/40">
+                <div class="p-1 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7">
+                        </path>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-bold text-white group-hover:text-primary transition-colors">
+                        {{ 'Back to Features' | translate }}
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Menu Dropdown (Visible when isMobileMenuOpen is true) -->
+<div *ngIf="isMobileMenuOpen" class="md:hidden fixed inset-0 z-40 bg-gray-900/95 backdrop-blur-sm pt-20 px-4">
+    <ul class="flex flex-col space-y-4 font-medium text-center">
+        <li>
+            <a routerLink="/" (click)="isMobileMenuOpen = false" routerLinkActive="text-primary"
+                [routerLinkActiveOptions]="{exact: true}"
+                class="block py-3 px-4 text-white hover:bg-gray-800 rounded-lg">
+                {{ 'Home' | translate }}
+            </a>
+        </li>
+        <li>
+            <a routerLink="/features" (click)="isMobileMenuOpen = false" routerLinkActive="text-primary"
+                class="block py-3 px-4 text-white hover:bg-gray-800 rounded-lg">
+                {{ 'Features' | translate }}
+            </a>
+        </li>
+        <li>
+            <a routerLink="/dictionary" (click)="isMobileMenuOpen = false" routerLinkActive="text-primary"
+                class="block py-3 px-4 text-white hover:bg-gray-800 rounded-lg">
+                {{ 'Dictionary' | translate }}
+            </a>
+        </li>
+        <li>
+            <a routerLink="/emergency" (click)="isMobileMenuOpen = false" routerLinkActive="text-primary"
+                class="block py-3 px-4 text-white hover:bg-gray-800 rounded-lg">
+                {{ 'Emergency' | translate }}
+            </a>
+        </li>
+        <li>
+            <a routerLink="/about-us" (click)="isMobileMenuOpen = false" routerLinkActive="text-primary"
+                class="block py-3 px-4 text-white hover:bg-gray-800 rounded-lg">
+                {{ 'About Us' | translate }}
+            </a>
+        </li>
+        <li *ngIf="isLoggedIn">
+            <a routerLink="/profile" (click)="isMobileMenuOpen = false" routerLinkActive="text-primary"
+                class="block py-3 px-4 text-white hover:bg-gray-800 rounded-lg">
+                {{ 'Profile' | translate }}
+            </a>
+        </li>
+        <li *ngIf="!isLoggedIn">
+            <a routerLink="/login" (click)="isMobileMenuOpen = false"
+                class="block py-3 px-4 text-white hover:bg-gray-800 rounded-lg">
+                {{ 'Log In' | translate }}
+            </a>
+        </li>
+    </ul>
+</div>
